@@ -43,12 +43,12 @@ export default function Hero() {
       >
         <motion.a
           whileHover={{ scale: 1.05 }}
-          href="https://github.com/webcreatorsri"
+          href="https://github.com/Jayasrip08"
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg text-white underline hover:text-purple-400 transition"
         >
-          🔗 GitHub: webcreatorsri
+          🔗 GitHub: Jayasrip08
         </motion.a>
 
         <motion.a
