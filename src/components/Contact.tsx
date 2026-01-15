@@ -62,7 +62,7 @@ export default function Contact() {
               <span>Connect On LinkedIn</span>
             </a>
             <a
-              href="https://github.com/webcreatorsri"
+              href="https://github.com/Jayasrip08"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 text-lg text-white hover:text-purple-400 transition"
