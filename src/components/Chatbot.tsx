@@ -29,7 +29,7 @@ export default function Chatbot() {
 - UI Design & Problem Solving`,
 
     contact: `📬 Contact Info:
-🔗 GitHub: https://github.com/webcreatorsri  
+🔗 GitHub: https://github.com/Jayasrip08
 🔗 LinkedIn: https://linkedin.com/in/jayasri-panchamurthi-b99a312b6`,
 
     certifications: `📜 Certifications:
