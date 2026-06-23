@@ -63,7 +63,7 @@ export default function Hero() {
 
         <motion.a
           whileHover={{ scale: 1.05 }}
-          href="https://drive.google.com/file/d/1npAkeqXMANQRrK3_NyS7O9aAluY6Ymsz/view?usp=sharing"
+          href="https://drive.google.com/file/d/1_edTdioKU4U3PAu47av4A_iMECqGosul/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-6 inline-block px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold transition"
