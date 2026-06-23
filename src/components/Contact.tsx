@@ -1,122 +1,313 @@
 'use client';
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaPaperPlane } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
+
+const socials = [
+  {
+    label: 'LinkedIn',
+    sub: 'jayasri-panchamurthi',
+    href: 'https://www.linkedin.com/in/jayasri-panchamurthi-b99a312b6',
+    icon: <FaLinkedin size={18} />,
+    color: '#3b82f6',
+  },
+  {
+    label: 'GitHub',
+    sub: 'Jayasrip08',
+    href: 'https://github.com/Jayasrip08',
+    icon: <FaGithub size={18} />,
+    color: '#a78bfa',
+  },
+  {
+    label: 'Email',
+    sub: 'jayasripanchamurthi@gmail.com',
+    href: 'mailto:jayasripanchamurthi@gmail.com',
+    icon: <FaEnvelope size={18} />,
+    color: '#06b6d4',
+  },
+];
+
+const inputStyle: React.CSSProperties = {
+  width: '100%',
+  padding: '0.85rem 1rem',
+  background: 'rgba(255,255,255,0.04)',
+  border: '1px solid rgba(255,255,255,0.09)',
+  borderRadius: '0.75rem',
+  color: '#f1f5f9',
+  fontSize: '0.9rem',
+  fontFamily: 'Inter, sans-serif',
+  outline: 'none',
+  transition: 'border-color 0.2s',
+};
 
 export default function Contact() {
   const form = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState('');
+  const [sending, setSending] = useState(false);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus('Sending...');
+    setSending(true);
+    setStatus('');
 
     emailjs
       .sendForm(
-        'service_n4cb3m2',     // ✅ Replace with your EmailJS Service ID
-        'template_2a8xltv',    // ✅ Replace with your EmailJS Template ID
+        'service_n4cb3m2',
+        'template_2a8xltv',
         form.current!,
-        '0qARs1Sn0xwIVu0zo'    // ✅ Replace with your EmailJS Public Key
+        '0qARs1Sn0xwIVu0zo'
       )
       .then(
         () => {
-          setStatus('✅ Message sent successfully!');
+          setStatus('success');
+          setSending(false);
           form.current?.reset();
         },
-        (error) => {
-          console.error(error);
-          setStatus('❌ Failed to send message. Try again.');
+        () => {
+          setStatus('error');
+          setSending(false);
         }
       );
   };
 
   return (
-    <section id="contact" className="bg-gray-950 text-white py-20 px-6">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12"
-      >
-        {/* 👋 Left Side - Info & Socials */}
+    <section
+      id="contact"
+      style={{ padding: '6rem 1.5rem 8rem', position: 'relative', overflow: 'hidden' }}
+    >
+      {/* Background accent */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '-100px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '700px',
+          height: '300px',
+          background: 'radial-gradient(ellipse, rgba(124,58,237,0.08) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="space-y-6"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: 'center', marginBottom: '3.5rem' }}
         >
-          <h2 className="text-4xl font-bold text-purple-400">💬 Let’s Connect</h2>
-          <p className="text-gray-300 text-lg leading-relaxed">
-            Got a project, idea, or just want to say hi?<br />
-            Drop me a message — I’d love to collaborate!
+          <span className="section-tag">Get In Touch</span>
+          <h2 className="section-heading">
+            Let&apos;s{' '}
+            <span className="gradient-text">Work Together</span>
+          </h2>
+          <p style={{ color: '#64748b', marginTop: '0.75rem', fontSize: '0.95rem', maxWidth: '480px', margin: '0.75rem auto 0' }}>
+            Got a project, idea, or just want to say hi? Drop me a message — I&apos;d love to connect!
           </p>
-          <div className="flex flex-col gap-4 mt-4">
-            <a
-              href="https://www.linkedin.com/in/jayasri-panchamurthi-b99a312b6"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 text-lg text-white hover:text-purple-400 transition"
-            >
-              <FaLinkedin className="text-2xl" />
-              <span>Connect On LinkedIn</span>
-            </a>
-            <a
-              href="https://github.com/Jayasrip08"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 text-lg text-white hover:text-purple-400 transition"
-            >
-              <FaGithub className="text-2xl" />
-              <span>View My GitHub</span>
-            </a>
-          </div>
         </motion.div>
 
-        {/* 📝 Right Side - Contact Form */}
-        <motion.form
-          ref={form}
-          onSubmit={sendEmail}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
-          className="space-y-6"
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '2.5rem',
+          }}
         >
-          <input
-            type="text"
-            name="from_name"
-            placeholder="Your Name"
-            required
-            className="w-full p-4 rounded-lg bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-purple-500 outline-none"
-          />
-          <input
-            type="email"
-            name="from_email"
-            placeholder="Your Email"
-            required
-            className="w-full p-4 rounded-lg bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-purple-500 outline-none"
-          />
-          <textarea
-            name="message"
-            rows={5}
-            placeholder="Your Message"
-            required
-            className="w-full p-4 rounded-lg bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-purple-500 outline-none"
-          ></textarea>
-
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            type="submit"
-            className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg text-lg font-semibold transition"
+          {/* Left — Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
           >
-            Send Message
-          </motion.button>
+            <div
+              className="glass-card"
+              style={{ borderRadius: '1.25rem', padding: '2rem' }}
+            >
+              <h3 style={{ color: '#f1f5f9', fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.5rem' }}>
+                Connect with me
+              </h3>
+              <p style={{ color: '#64748b', fontSize: '0.88rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                I&apos;m actively looking for opportunities. Whether it&apos;s a full-time role,
+                freelance project, or a collaboration, feel free to reach out!
+              </p>
 
-          {status && (
-            <p className="text-sm mt-3 text-green-400 font-medium">{status}</p>
-          )}
-        </motion.form>
-      </motion.div>
+              {socials.map((s) => (
+                <motion.a
+                  key={s.label}
+                  href={s.href}
+                  target={s.href.startsWith('mailto') ? undefined : '_blank'}
+                  rel="noopener noreferrer"
+                  whileHover={{ x: 4 }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.9rem',
+                    padding: '0.75rem',
+                    borderRadius: '0.75rem',
+                    textDecoration: 'none',
+                    color: '#94a3b8',
+                    transition: 'background 0.2s',
+                    marginBottom: '0.25rem',
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.05)';
+                    (e.currentTarget as HTMLAnchorElement).style.color = '#f1f5f9';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
+                    (e.currentTarget as HTMLAnchorElement).style.color = '#94a3b8';
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '0.6rem',
+                      background: `${s.color}15`,
+                      border: `1px solid ${s.color}30`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: s.color,
+                      flexShrink: 0,
+                    }}
+                  >
+                    {s.icon}
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>{s.label}</div>
+                    <div style={{ fontSize: '0.75rem', color: '#475569' }}>{s.sub}</div>
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right — Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            <div
+              className="glass-card"
+              style={{ borderRadius: '1.25rem', padding: '2rem' }}
+            >
+              <h3 style={{ color: '#f1f5f9', fontWeight: 700, fontSize: '1.15rem', marginBottom: '1.5rem' }}>
+                Send a message
+              </h3>
+              <form
+                ref={form}
+                onSubmit={sendEmail}
+                style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+              >
+                <input
+                  type="text"
+                  name="from_name"
+                  placeholder="Your Name"
+                  required
+                  style={inputStyle}
+                  onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = 'rgba(124,58,237,0.5)'; }}
+                  onBlur={(e) => { (e.target as HTMLInputElement).style.borderColor = 'rgba(255,255,255,0.09)'; }}
+                />
+                <input
+                  type="email"
+                  name="from_email"
+                  placeholder="Your Email"
+                  required
+                  style={inputStyle}
+                  onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = 'rgba(6,182,212,0.5)'; }}
+                  onBlur={(e) => { (e.target as HTMLInputElement).style.borderColor = 'rgba(255,255,255,0.09)'; }}
+                />
+                <textarea
+                  name="message"
+                  rows={5}
+                  placeholder="Your Message"
+                  required
+                  style={{ ...inputStyle, resize: 'none' }}
+                  onFocus={(e) => { (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(124,58,237,0.5)'; }}
+                  onBlur={(e) => { (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(255,255,255,0.09)'; }}
+                />
+
+                <motion.button
+                  type="submit"
+                  disabled={sending}
+                  whileHover={{ scale: sending ? 1 : 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    padding: '0.85rem',
+                    background: sending
+                      ? 'rgba(124,58,237,0.4)'
+                      : 'linear-gradient(135deg, #7c3aed, #5b21b6)',
+                    border: 'none',
+                    borderRadius: '0.75rem',
+                    color: '#fff',
+                    fontSize: '0.95rem',
+                    fontWeight: 600,
+                    cursor: sending ? 'not-allowed' : 'pointer',
+                    transition: 'box-shadow 0.2s',
+                    fontFamily: 'Inter, sans-serif',
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!sending) (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 30px rgba(124,58,237,0.4)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLButtonElement).style.boxShadow = 'none';
+                  }}
+                >
+                  <FaPaperPlane size={14} />
+                  {sending ? 'Sending...' : 'Send Message'}
+                </motion.button>
+
+                {status === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    style={{
+                      padding: '0.75rem 1rem',
+                      background: 'rgba(16,185,129,0.1)',
+                      border: '1px solid rgba(16,185,129,0.3)',
+                      borderRadius: '0.75rem',
+                      color: '#34d399',
+                      fontSize: '0.85rem',
+                      fontWeight: 500,
+                    }}
+                  >
+                    ✓ Message sent successfully! I&apos;ll get back to you soon.
+                  </motion.div>
+                )}
+                {status === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    style={{
+                      padding: '0.75rem 1rem',
+                      background: 'rgba(239,68,68,0.1)',
+                      border: '1px solid rgba(239,68,68,0.3)',
+                      borderRadius: '0.75rem',
+                      color: '#f87171',
+                      fontSize: '0.85rem',
+                      fontWeight: 500,
+                    }}
+                  >
+                    ✗ Failed to send. Please try again or email me directly.
+                  </motion.div>
+                )}
+              </form>
+            </div>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

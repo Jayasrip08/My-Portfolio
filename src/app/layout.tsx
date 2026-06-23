@@ -1,5 +1,12 @@
+import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '../components/Navbar';
+
+export const metadata: Metadata = {
+  title: 'Jayasri Panchamurthi — Full-Stack Developer & AI Enthusiast',
+  description:
+    'Portfolio of Jayasri Panchamurthi — aspiring Full-Stack Developer, AI Enthusiast and Innovator. Explore projects, skills, certifications and get in touch.',
+};
 
 export default function RootLayout({
   children,
@@ -8,9 +15,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-gray-900 text-white">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body style={{ backgroundColor: '#03050f', color: '#f1f5f9' }}>
         <Navbar />
-        <main className="pt-14">{children}</main> {/* Match with navbar height */}
+        <main style={{ paddingTop: '4rem' }}>{children}</main>
       </body>
     </html>
   );

@@ -9,27 +9,13 @@ import Chatbot from '@/components/Chatbot';
 
 export default function HomePage() {
   return (
-    <main className="bg-black text-white">
-      <section id="home">
-        <Hero />
-      </section>
-      <section id="about">
-        <About />
-      </section>
-      <section id="skills">
-        <Skills />
-      </section>
-      <section id="projects">
-        <Projects />
-      </section>
-      <section id="certifications">
-        <Certifications />
-      </section>
-      <section id="contact">
-        <Contact />
-      </section>
-
-      {/* ✅ Add these two inside <main>, at the end */}
+    <main>
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Certifications />
+      <Contact />
       <Chatbot />
       <MusicToggle />
     </main>
