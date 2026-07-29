@@ -12,38 +12,31 @@ type Certification = {
 
 const certifications: Certification[] = [
   {
-    title: 'Full Stack Web Development Internship',
-    issuer: 'EDUREKA',
-    date: 'Oct 2024',
-    link: 'https://www.linkedin.com/posts/jayasri-panchamurthi-b99a312b6_edureka-certifiedskills-webdevelopment-activity-7251628679892471808-_Xsg?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEv4mGUBV_Ry6Zo2Zi03sHtIC5RUGNJiO-M',
-    color: '#f59e0b',
+    title: 'Artificial Intelligence Intern',
+    issuer: 'Infosys Springboard',
+    date: '2026',
+    link: 'https://www.linkedin.com/posts/jayasri-panchamurthi-b99a312b6_infosysspringboard-virtualinternship-continuouslearning-share-7483129817895170049-lKnx/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEv4mGUBV_Ry6Zo2Zi03sHtIC5RUGNJiO-M',
+    color: '#06b6d4',
   },
   {
-    title: 'Full Stack Web Development Internship',
-    issuer: 'TOPPER WORLD',
-    date: 'Sep 2024',
-    link: 'https://www.linkedin.com/posts/jayasri-panchamurthi-b99a312b6_webdevelopment-internship-topperworld-activity-7251097122719068160-BhlC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEv4mGUBV_Ry6Zo2Zi03sHtIC5RUGNJiO-M',
+    title: 'Python Internship',
+    issuer: 'DLK Career Development Center',
+    date: 'May 2024',
+    link: 'https://www.linkedin.com/posts/jayasri-panchamurthi-b99a312b6_pythondeveloper-internshipcompletion-dlkcareerdevelopment-activity-7250787130837135360-1lJg?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEv4mGUBV_Ry6Zo2Zi03sHtIC5RUGNJiO-M',
+    color: '#7c3aed',
+  },
+  {
+    title: 'Full Stack Web Development',
+    issuer: 'NXT-WAVE',
+    date: 'Nov 2024',
+    link: 'https://www.linkedin.com/posts/jayasri-panchamurthi-b99a312b6_nxtwave-fullstackdevelopment-techskills-activity-7256561571349274624-95N2?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEv4mGUBV_Ry6Zo2Zi03sHtIC5RUGNJiO-M',
     color: '#10b981',
   },
   {
-    title: 'Full Stack Web Development Internship',
-    issuer: 'PROMPT INFOTECH',
-    date: 'Aug 2024',
-    link: 'https://www.linkedin.com/posts/jayasri-panchamurthi-b99a312b6_just-wrapped-up-an-intensive-5-day-internship-activity-7237488409454288896-vJJH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEv4mGUBV_Ry6Zo2Zi03sHtIC5RUGNJiO-M',
-    color: '#3b82f6',
-  },
-  {
-    title: 'Gen-AI Course',
-    issuer: 'NXT-WAVE',
-    date: 'Mar 2025',
-    link: 'https://www.linkedin.com/posts/jayasri-panchamurthi-b99a312b6_generativeai-aiworkshop-nxtwave-activity-7314190941228027904-IzKB?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEv4mGUBV_Ry6Zo2Zi03sHtIC5RUGNJiO-M',
-    color: '#a78bfa',
-  },
-  {
-    title: 'Java & Python 100 Days Mastery',
-    issuer: 'Udemy & Simplilearn',
-    date: 'Mar 2025',
-    link: 'https://www.linkedin.com/posts/jayasri-panchamurthi-b99a312b6_python-100daysofcode-coding-activity-7309490405429903360-MCZl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEv4mGUBV_Ry6Zo2Zi03sHtIC5RUGNJiO-M',
+    title: 'Generative AI Overview for Project Managers',
+    issuer: 'PMI (Project Management Institute)',
+    date: 'Jan 2025',
+    link: 'https://www.linkedin.com/posts/jayasri-panchamurthi-b99a312b6_generativeai-projectmanagement-pmi-activity-7289650041270222848-J-Xz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEv4mGUBV_Ry6Zo2Zi03sHtIC5RUGNJiO-M',
     color: '#ec4899',
   },
   {
@@ -82,7 +75,7 @@ export default function Certifications() {
             Certifications &{' '}
             <span className="gradient-text">Achievements</span>
           </h2>
-          <p style={{ color: '#64748b', marginTop: '0.75rem', fontSize: '0.95rem' }}>
+          <p style={{ color: '#94a3b8', marginTop: '0.75rem', fontSize: '0.95rem' }}>
             Continuous learning across full-stack, AI, and cloud technologies
           </p>
         </motion.div>
@@ -200,7 +193,7 @@ export default function Certifications() {
                             {cert.issuer}
                           </span>
                           <span style={{ color: '#334155', fontSize: '0.78rem' }}>•</span>
-                          <span style={{ color: '#475569', fontSize: '0.78rem' }}>{cert.date}</span>
+                          <span style={{ color: '#94a3b8', fontSize: '0.78rem' }}>{cert.date}</span>
                         </div>
                       </div>
                     </div>

@@ -7,7 +7,6 @@ type Project = {
   description: string;
   tech: string[];
   github: string;
-  live?: string;
   gradient: string;
   featured?: boolean;
 };
@@ -28,7 +27,7 @@ const projects: Project[] = [
       'Full-stack system for patients to book doctor appointments across multiple hospitals with real-time availability.',
     tech: ['React', '.NET Core', 'SQLite', 'Entity Framework'],
     github: 'https://github.com/Jayasrip08/kosofttask2-Dotnet1',
-    gradient: 'linear-gradient(135deg, #059669, #0891b2)',
+    gradient: 'linear-gradient(135deg, #059669, #10b981)',
     featured: true,
   },
   {
@@ -87,7 +86,7 @@ export default function Projects() {
             Featured{' '}
             <span className="gradient-text">Projects</span>
           </h2>
-          <p style={{ color: '#64748b', marginTop: '0.75rem', fontSize: '0.95rem' }}>
+          <p style={{ color: '#94a3b8', marginTop: '0.75rem', fontSize: '0.95rem' }}>
             Real-world solutions designed and developed from idea to deployment
           </p>
         </motion.div>
@@ -173,7 +172,7 @@ export default function Projects() {
 
                 <p
                   style={{
-                    color: '#64748b',
+                    color: '#94a3b8',
                     fontSize: '0.85rem',
                     lineHeight: 1.7,
                     flex: 1,

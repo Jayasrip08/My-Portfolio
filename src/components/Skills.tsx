@@ -5,17 +5,19 @@ import {
 } from 'react-icons/fa';
 import {
   SiDotnet, SiMysql, SiFlask, SiStreamlit, SiGooglecloud, SiSqlite,
-  SiDjango, SiPostgresql, SiNextdotjs, SiTypescript,
+  SiDjango, SiPostgresql, SiNextdotjs, SiTypescript, SiFlutter, SiDart, SiFirebase, SiFastapi,
 } from 'react-icons/si';
 
 type Skill = { name: string; icon: React.ReactNode; color: string };
 
 const categories: { title: string; color: string; bg: string; skills: Skill[] }[] = [
   {
-    title: 'Frontend',
+    title: 'Frontend & Mobile',
     color: '#f59e0b',
     bg: 'rgba(245, 158, 11, 0.1)',
     skills: [
+      { name: 'Flutter', icon: <SiFlutter />, color: '#02569B' },
+      { name: 'Dart', icon: <SiDart />, color: '#0175C2' },
       { name: 'JavaScript', icon: <FaJs />, color: '#f59e0b' },
       { name: 'TypeScript', icon: <SiTypescript />, color: '#3b82f6' },
       { name: 'HTML5', icon: <FaHtml5 />, color: '#f97316' },
@@ -31,6 +33,7 @@ const categories: { title: string; color: string; bg: string; skills: Skill[] }[
     bg: 'rgba(16, 185, 129, 0.1)',
     skills: [
       { name: 'Python', icon: <FaPython />, color: '#facc15' },
+      { name: 'FastAPI', icon: <SiFastapi />, color: '#009688' },
       { name: 'Node.js', icon: <FaNodeJs />, color: '#4ade80' },
       { name: '.NET Core', icon: <SiDotnet />, color: '#a78bfa' },
       { name: 'Django', icon: <SiDjango />, color: '#10b981' },
@@ -38,10 +41,11 @@ const categories: { title: string; color: string; bg: string; skills: Skill[] }[
     ],
   },
   {
-    title: 'Databases',
+    title: 'Databases & Cloud Services',
     color: '#3b82f6',
     bg: 'rgba(59, 130, 246, 0.1)',
     skills: [
+      { name: 'Firebase', icon: <SiFirebase />, color: '#FFCA28' },
       { name: 'MySQL', icon: <SiMysql />, color: '#fbbf24' },
       { name: 'PostgreSQL', icon: <SiPostgresql />, color: '#60a5fa' },
       { name: 'SQLite', icon: <SiSqlite />, color: '#94a3b8' },

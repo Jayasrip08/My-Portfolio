@@ -19,8 +19,6 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
-
-      // Detect active section
       const sections = navItems.map((n) => document.getElementById(n.id));
       const scrollPos = window.scrollY + 120;
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -162,17 +160,6 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Resume CTA (desktop) */}
-        <a
-          href="https://drive.google.com/file/d/1_edTdioKU4U3PAu47av4A_iMECqGosul/view?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:inline-flex btn-primary"
-          style={{ fontSize: '0.85rem', padding: '0.5rem 1.25rem' }}
-        >
-          Resume ↗
-        </a>
-
         {/* Mobile Hamburger */}
         <button
           className="md:hidden"
@@ -184,7 +171,6 @@ export default function Navbar() {
             padding: '0.4rem 0.6rem',
             cursor: 'pointer',
             color: '#f1f5f9',
-            display: 'flex',
             flexDirection: 'column',
             gap: '4px',
           }}
@@ -254,22 +240,6 @@ export default function Navbar() {
                   </button>
                 </motion.li>
               ))}
-              <motion.li
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                style={{ marginTop: '1rem' }}
-              >
-                <a
-                  href="https://drive.google.com/file/d/1_edTdioKU4U3PAu47av4A_iMECqGosul/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
-                  style={{ width: '100%', justifyContent: 'center' }}
-                >
-                  View Resume ↗
-                </a>
-              </motion.li>
             </ul>
           </motion.div>
         )}

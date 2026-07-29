@@ -1,13 +1,12 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaArrowDown } from 'react-icons/fa';
 
 const ROLES = [
   'Full-Stack Developer',
   'AI Enthusiast',
-  'Problem Solver',
-  'Innovator',
+  'IT Graduate',
   'Python Developer',
 ];
 
@@ -17,15 +16,21 @@ export default function Hero() {
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const role = ROLES[roleIndex];
-    let timeout: ReturnType<typeof setTimeout>;
+    const current = ROLES[roleIndex];
+    let timeout: NodeJS.Timeout;
 
-    if (!deleting && displayed.length < role.length) {
-      timeout = setTimeout(() => setDisplayed(role.slice(0, displayed.length + 1)), 65);
-    } else if (!deleting && displayed.length === role.length) {
+    if (!deleting && displayed.length < current.length) {
+      timeout = setTimeout(
+        () => setDisplayed(current.slice(0, displayed.length + 1)),
+        80
+      );
+    } else if (!deleting && displayed.length === current.length) {
       timeout = setTimeout(() => setDeleting(true), 2000);
     } else if (deleting && displayed.length > 0) {
-      timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 35);
+      timeout = setTimeout(
+        () => setDisplayed(current.slice(0, displayed.length - 1)),
+        40
+      );
     } else if (deleting && displayed.length === 0) {
       setDeleting(false);
       setRoleIndex((i) => (i + 1) % ROLES.length);
@@ -160,7 +165,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.5 }}
           style={{
             fontSize: '1rem',
-            color: '#64748b',
+            color: '#94a3b8',
             maxWidth: '520px',
             margin: '0 auto 2.5rem',
             lineHeight: 1.75,

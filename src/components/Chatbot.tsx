@@ -22,7 +22,7 @@ const predefined: Record<string, string> = {
   contact: `You can reach Jayasri at:
 • GitHub: github.com/Jayasrip08
 • LinkedIn: linkedin.com/in/jayasri-panchamurthi-b99a312b6
-• Or use the Contact section below to send a message directly!`,
+• Or use the Contact section to send a message directly!`,
 
   certifications: `Jayasri's certifications include:
 • Full Stack Web Dev — Edureka, Topper World, Prompt Infotech
@@ -63,14 +63,14 @@ export default function Chatbot() {
     else if (lower.includes('cert') || lower.includes('course'))
       reply = predefined.certifications;
     else if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey'))
-      reply = `Hi there! 👋 I'm Jayasri's portfolio assistant. Ask me about her projects, skills, certifications, or contact details!`;
+      reply = `Hi there! I'm Jayasri's portfolio assistant. Ask me about her projects, skills, certifications, or contact details!`;
     else if (lower.includes('resume'))
-      reply = `You can view Jayasri's resume here: https://drive.google.com/file/d/1_edTdioKU4U3PAu47av4A_iMECqGosul/view?usp=sharing`;
+      reply = `You can view Jayasri's resume here: https://drive.google.com/file/d/1_edTdioKU4U3PAu47av4A_iMECqGosul/view`;
 
     setTimeout(() => {
       setChat((prev) => [...prev, { role: 'bot', text: reply }]);
       setLoading(false);
-    }, 750);
+    }, 700);
   };
 
   return (
@@ -79,38 +79,35 @@ export default function Chatbot() {
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle chatbot"
-        animate={isOpen ? {} : { scale: [1, 1.06, 1] }}
-        transition={{ repeat: Infinity, duration: 2.5 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.96 }}
         style={{
           position: 'fixed',
           bottom: '1.5rem',
           right: '1.5rem',
           zIndex: 50,
-          width: '52px',
-          height: '52px',
+          width: '50px',
+          height: '50px',
           borderRadius: '50%',
-          background: isOpen
-            ? 'rgba(30, 10, 60, 0.9)'
-            : 'linear-gradient(135deg, #7c3aed, #06b6d4)',
-          border: '1px solid rgba(124,58,237,0.4)',
-          backdropFilter: 'blur(12px)',
-          color: '#fff',
+          background: isOpen ? '#f1f5f9' : '#2563eb',
+          border: '1px solid #e2e8f0',
+          color: isOpen ? '#475569' : '#fff',
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 4px 24px rgba(124,58,237,0.4)',
-          transition: 'background 0.3s',
+          boxShadow: '0 4px 16px rgba(37,99,235,0.3)',
+          transition: 'background 0.25s, color 0.25s',
         }}
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.span key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ opacity: 0 }}>
-              <FaTimes size={18} />
+              <FaTimes size={17} />
             </motion.span>
           ) : (
             <motion.span key="robot" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ opacity: 0 }}>
-              <FaRobot size={18} />
+              <FaRobot size={17} />
             </motion.span>
           )}
         </AnimatePresence>
@@ -120,30 +117,29 @@ export default function Chatbot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.92, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            exit={{ opacity: 0, scale: 0.92, y: 16 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 26 }}
             style={{
               position: 'fixed',
-              bottom: '5.5rem',
+              bottom: '5.25rem',
               right: '1.5rem',
               zIndex: 40,
               width: '320px',
-              background: 'rgba(8, 6, 22, 0.92)',
-              border: '1px solid rgba(124,58,237,0.3)',
-              borderRadius: '1.25rem',
-              backdropFilter: 'blur(20px)',
+              background: '#ffffff',
+              border: '1px solid #e2e8f0',
+              borderRadius: '1rem',
               overflow: 'hidden',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(124,58,237,0.1)',
+              boxShadow: '0 16px 48px rgba(15,23,42,0.12)',
             }}
           >
             {/* Header */}
             <div
               style={{
-                padding: '1rem 1.25rem',
-                borderBottom: '1px solid rgba(255,255,255,0.06)',
-                background: 'linear-gradient(135deg, rgba(124,58,237,0.15), rgba(6,182,212,0.08))',
+                padding: '0.9rem 1.1rem',
+                borderBottom: '1px solid #f1f5f9',
+                background: '#f8fafc',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.65rem',
@@ -151,17 +147,17 @@ export default function Chatbot() {
             >
               <div
                 style={{
-                  width: '32px', height: '32px', borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #7c3aed, #06b6d4)',
+                  width: '30px', height: '30px', borderRadius: '50%',
+                  background: '#2563eb',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}
               >
-                <FaRobot size={14} color="#fff" />
+                <FaRobot size={13} color="#fff" />
               </div>
               <div>
-                <div style={{ color: '#f1f5f9', fontWeight: 600, fontSize: '0.88rem' }}>Portfolio Assistant</div>
-                <div style={{ color: '#06b6d4', fontSize: '0.7rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#06b6d4', display: 'inline-block' }} />
+                <div style={{ color: '#0f172a', fontWeight: 600, fontSize: '0.85rem' }}>Portfolio Assistant</div>
+                <div style={{ color: '#22c55e', fontSize: '0.68rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#22c55e', display: 'inline-block' }} />
                   Online
                 </div>
               </div>
@@ -170,27 +166,28 @@ export default function Chatbot() {
             {/* Messages */}
             <div
               style={{
-                height: '260px',
+                height: '250px',
                 overflowY: 'auto',
-                padding: '1rem',
+                padding: '0.85rem',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '0.6rem',
+                gap: '0.5rem',
+                background: '#fafafa',
               }}
             >
               {chat.length === 0 && (
                 <div
                   style={{
-                    padding: '0.75rem 1rem',
-                    background: 'rgba(124,58,237,0.1)',
-                    border: '1px solid rgba(124,58,237,0.2)',
-                    borderRadius: '0.75rem 0.75rem 0.75rem 0.1rem',
-                    color: '#c4b5fd',
-                    fontSize: '0.82rem',
+                    padding: '0.7rem 0.9rem',
+                    background: '#eff6ff',
+                    border: '1px solid #bfdbfe',
+                    borderRadius: '0.75rem 0.75rem 0.75rem 0.15rem',
+                    color: '#1d4ed8',
+                    fontSize: '0.8rem',
                     lineHeight: 1.6,
                   }}
                 >
-                  👋 Hi! I&apos;m Jayasri&apos;s portfolio assistant.<br />
+                  Hi! I&apos;m Jayasri&apos;s portfolio assistant.<br />
                   Ask me about her <strong>projects</strong>, <strong>skills</strong>, <strong>certifications</strong>, or <strong>contact info</strong>.
                 </div>
               )}
@@ -198,23 +195,22 @@ export default function Chatbot() {
               {chat.map((msg, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   style={{
                     alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
                     maxWidth: '85%',
-                    padding: '0.6rem 0.85rem',
+                    padding: '0.55rem 0.8rem',
                     borderRadius: msg.role === 'user'
-                      ? '0.75rem 0.75rem 0.1rem 0.75rem'
-                      : '0.75rem 0.75rem 0.75rem 0.1rem',
-                    background: msg.role === 'user'
-                      ? 'linear-gradient(135deg, #7c3aed, #5b21b6)'
-                      : 'rgba(255,255,255,0.05)',
-                    border: msg.role === 'bot' ? '1px solid rgba(255,255,255,0.07)' : 'none',
-                    color: msg.role === 'user' ? '#fff' : '#cbd5e1',
+                      ? '0.75rem 0.75rem 0.15rem 0.75rem'
+                      : '0.75rem 0.75rem 0.75rem 0.15rem',
+                    background: msg.role === 'user' ? '#2563eb' : '#ffffff',
+                    border: msg.role === 'bot' ? '1px solid #e2e8f0' : 'none',
+                    color: msg.role === 'user' ? '#fff' : '#374151',
                     fontSize: '0.8rem',
                     lineHeight: 1.65,
                     whiteSpace: 'pre-line',
+                    boxShadow: msg.role === 'bot' ? '0 1px 4px rgba(15,23,42,0.04)' : 'none',
                   }}
                 >
                   {msg.text}
@@ -225,10 +221,10 @@ export default function Chatbot() {
                 <div
                   style={{
                     alignSelf: 'flex-start',
-                    padding: '0.6rem 0.85rem',
-                    background: 'rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(255,255,255,0.07)',
-                    borderRadius: '0.75rem 0.75rem 0.75rem 0.1rem',
+                    padding: '0.55rem 0.85rem',
+                    background: '#ffffff',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: '0.75rem 0.75rem 0.75rem 0.15rem',
                     display: 'flex',
                     gap: '4px',
                     alignItems: 'center',
@@ -239,7 +235,7 @@ export default function Chatbot() {
                       key={i}
                       style={{
                         width: '6px', height: '6px', borderRadius: '50%',
-                        background: '#a78bfa',
+                        background: '#93c5fd',
                         animation: `bounce 1s ease-in-out ${i * 0.15}s infinite`,
                       }}
                     />
@@ -252,10 +248,11 @@ export default function Chatbot() {
             {/* Input */}
             <div
               style={{
-                padding: '0.75rem 1rem',
-                borderTop: '1px solid rgba(255,255,255,0.06)',
+                padding: '0.65rem 0.85rem',
+                borderTop: '1px solid #f1f5f9',
                 display: 'flex',
-                gap: '0.5rem',
+                gap: '0.45rem',
+                background: '#ffffff',
               }}
             >
               <input
@@ -266,12 +263,12 @@ export default function Chatbot() {
                 placeholder="Ask anything..."
                 style={{
                   flex: 1,
-                  padding: '0.55rem 0.8rem',
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  borderRadius: '0.6rem',
-                  color: '#f1f5f9',
-                  fontSize: '0.82rem',
+                  padding: '0.5rem 0.75rem',
+                  background: '#f8fafc',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '0.5rem',
+                  color: '#0f172a',
+                  fontSize: '0.8rem',
                   outline: 'none',
                   fontFamily: 'Inter, sans-serif',
                 }}
@@ -280,19 +277,18 @@ export default function Chatbot() {
                 onClick={sendToBot}
                 disabled={loading || !input.trim()}
                 style={{
-                  padding: '0.55rem 0.75rem',
-                  background: 'linear-gradient(135deg, #7c3aed, #5b21b6)',
+                  padding: '0.5rem 0.7rem',
+                  background: loading || !input.trim() ? '#e2e8f0' : '#2563eb',
                   border: 'none',
-                  borderRadius: '0.6rem',
-                  color: '#fff',
-                  cursor: 'pointer',
-                  opacity: loading || !input.trim() ? 0.5 : 1,
-                  transition: 'opacity 0.2s',
+                  borderRadius: '0.5rem',
+                  color: loading || !input.trim() ? '#94a3b8' : '#fff',
+                  cursor: loading || !input.trim() ? 'not-allowed' : 'pointer',
+                  transition: 'background 0.2s',
                   display: 'flex',
                   alignItems: 'center',
                 }}
               >
-                <FaPaperPlane size={13} />
+                <FaPaperPlane size={12} />
               </button>
             </div>
           </motion.div>

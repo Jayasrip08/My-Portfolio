@@ -1,37 +1,37 @@
 'use client';
-import { useRef, useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPaperPlane } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 
 const socials = [
   {
-    label: 'LinkedIn',
-    sub: 'jayasri-panchamurthi',
-    href: 'https://www.linkedin.com/in/jayasri-panchamurthi-b99a312b6',
-    icon: <FaLinkedin size={18} />,
-    color: '#3b82f6',
-  },
-  {
-    label: 'GitHub',
-    sub: 'Jayasrip08',
-    href: 'https://github.com/Jayasrip08',
-    icon: <FaGithub size={18} />,
-    color: '#a78bfa',
-  },
-  {
-    label: 'Email',
-    sub: 'jayasripanchamurthi@gmail.com',
-    href: 'mailto:jayasripanchamurthi@gmail.com',
     icon: <FaEnvelope size={18} />,
+    label: 'Email',
+    sub: 'jayasrip1808@gmail.com',
+    href: 'mailto:jayasrip1808@gmail.com',
     color: '#06b6d4',
+  },
+  {
+    icon: <FaLinkedin size={18} />,
+    label: 'LinkedIn',
+    sub: 'Connect on LinkedIn',
+    href: 'https://www.linkedin.com/in/jayasri-panchamurthi-b99a312b6',
+    color: '#7c3aed',
+  },
+  {
+    icon: <FaGithub size={18} />,
+    label: 'GitHub',
+    sub: 'Check my code repositories',
+    href: 'https://github.com/Jayasrip08',
+    color: '#38bdf8',
   },
 ];
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
   padding: '0.85rem 1rem',
-  background: 'rgba(255,255,255,0.04)',
+  background: 'rgba(255,255,255,0.03)',
   border: '1px solid rgba(255,255,255,0.09)',
   borderRadius: '0.75rem',
   color: '#f1f5f9',
@@ -59,37 +59,16 @@ export default function Contact() {
         '0qARs1Sn0xwIVu0zo'
       )
       .then(
-        () => {
-          setStatus('success');
-          setSending(false);
-          form.current?.reset();
-        },
-        () => {
-          setStatus('error');
-          setSending(false);
-        }
+        () => { setStatus('success'); setSending(false); form.current?.reset(); },
+        () => { setStatus('error'); setSending(false); }
       );
   };
 
   return (
     <section
       id="contact"
-      style={{ padding: '6rem 1.5rem 8rem', position: 'relative', overflow: 'hidden' }}
+      style={{ padding: '6rem 1.5rem 7rem', position: 'relative' }}
     >
-      {/* Background accent */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '-100px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '700px',
-          height: '300px',
-          background: 'radial-gradient(ellipse, rgba(124,58,237,0.08) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
-
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         {/* Heading */}
         <motion.div
@@ -104,7 +83,7 @@ export default function Contact() {
             Let&apos;s{' '}
             <span className="gradient-text">Work Together</span>
           </h2>
-          <p style={{ color: '#64748b', marginTop: '0.75rem', fontSize: '0.95rem', maxWidth: '480px', margin: '0.75rem auto 0' }}>
+          <p style={{ color: '#94a3b8', marginTop: '0.75rem', fontSize: '0.95rem', maxWidth: '460px', margin: '0.75rem auto 0' }}>
             Got a project, idea, or just want to say hi? Drop me a message — I&apos;d love to connect!
           </p>
         </motion.div>
@@ -131,7 +110,7 @@ export default function Contact() {
               <h3 style={{ color: '#f1f5f9', fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.5rem' }}>
                 Connect with me
               </h3>
-              <p style={{ color: '#64748b', fontSize: '0.88rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+              <p style={{ color: '#94a3b8', fontSize: '0.88rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
                 I&apos;m actively looking for opportunities. Whether it&apos;s a full-time role,
                 freelance project, or a collaboration, feel free to reach out!
               </p>
@@ -181,7 +160,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>{s.label}</div>
-                    <div style={{ fontSize: '0.75rem', color: '#475569' }}>{s.sub}</div>
+                    <div style={{ fontSize: '0.75rem', color: '#64748b' }}>{s.sub}</div>
                   </div>
                 </motion.a>
               ))}
